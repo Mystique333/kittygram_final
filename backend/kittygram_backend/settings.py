@@ -120,3 +120,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 
 }
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000'
+]
