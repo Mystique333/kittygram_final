@@ -3,14 +3,15 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
+from django.core.management.utils import get_random_secret_key
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'empty')
+SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 
-DEBUG = True
+DEBUG = str(os.getenv('DEBUG', True)).lower() == 'true'
 
 ALLOWED_HOSTS = ['kittygramtest.zapto.org', '127.0.0.1', 'localhost', '158.160.19.213']
 

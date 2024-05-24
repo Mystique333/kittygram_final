@@ -11,6 +11,7 @@ services:
     env_file: .env
     volumes:
       - pg_data:/var/lib/postgresql/data
+
   backend:
     image: mystique333/kittygram_backend
     env_file: .env
@@ -19,12 +20,14 @@ services:
       - media:/app/media
     depends_on:
       - db
+
   frontend:
     env_file: .env
     image: mystique333/kittygram_frontend
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static/
+
   gateway:
     image: mystique333/kittygram_gateway
     env_file: .env
@@ -35,3 +38,4 @@ services:
       - media:/app/media
     depends_on:
       - backend
+      - frontend
